@@ -2,6 +2,7 @@
  \usepackage{amsmath}
  \usepackage{mathtools}
  \usepackage{accents}
+\usepackage{hyperref}
 
  \newcommand*{\dt}[1]{%
   \accentset{\mbox{\large\bfseries .}}{#1}}
@@ -178,6 +179,24 @@ g_1B_{12} = g_2B_{21}.
 \item Write an original code to find the numerical value fo the peak of the derivative of the Planck curve $\partial B_\nu\left(\nu, T\right)/\partial T$ with respect to $T$ in terms of multiples of $x = h\nu/k_bT$.
 \end{itemize}
 
-\noindent \textbf{Answer} The code for this can be found on my GitHub page, \url{}
+\noindent \textbf{Answer} The code for this can be found on my GitHub page, \url{https://github.com/AlexaVillaume/RadiativeTransfer/blob/master/planck_curve.py}. \\
+
+\noindent Here are a couple of example plots to show that the peaks of both the Planck curve and the derivative of the Planck curve with respect to $T$ are successfully being found:
+
+\begin{figure}[b!]
+\includegraphics[width=0.5\textwidth]{planck_w_peak.pdf}
+\caption{Planck curve as a function of frequency  for $T = 10^5$ K with peak labeled.}
+\end{figure}
+
+\begin{figure}[b!]
+\includegraphics[width=0.5\textwidth]{planck_w_peak_lamb.pdf}
+\caption{Planck curve as a function of wavelength for $T = 10^5$ K with peak labeled.}
+\end{figure}
+
+\begin{figure}[b!]
+\includegraphics[width=0.5\textwidth]{derive_w_peak.pdf}
+\caption{Derivative of Planck curve with respect to $T$ for $T = 10^5$ K with peak labeled.}
+\end{figure}
+
 
 \end{document}

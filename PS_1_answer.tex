@@ -22,16 +22,95 @@ Radiative Transfer}
 
 \noindent where $n_a$ is the number density of atoms.\\
 
-\noindent \textbf{Answer} \\
+\noindent \textbf{Answer} This can be shown through dimensional analysis and well-placed definitions. Starting with stating the units of specific intensity, 
+
+\begin{equation}
+\left[ I_\nu \right] = \text{erg} \text{ s}^{-1} \text{ cm}^{-2} \text{ }\Omega^{-1} \text{ }\nu^{-1}.
+\end{equation}
+
+\noindent The first thing I'll do is get rid of the 'per steradians' by integrating over the $\Omega$,
+
+\begin{equation}
+\int I d\Omega = 4\pi J_\nu.
+\end{equation} 
+
+\noindent I can also knock out the 'erg' by dividing by the expression by the photon energy, $h\nu$. Now I have,
+
+\begin{equation}
+\left[ 4\pi \frac{J_\nu}{h\nu} \right] = \text{ s}^{-1} \text{ cm}^{-2}  \text{ }\nu^{-1}.
+\end{equation}
+
+\noindent To change this expression from 'per area' to 'per volume' I need an extra factor of length$^{-1}$. This I can get by thinking of the absorption, $\alpha_\nu = n_a \sigma_\nu \left[\text{ cm}^{-1}\right]$. I can place this into the expression above to be dimensionally correct to get,
+
+\begin{equation}
+\left[ 4\pi n_a \frac{J_\nu \sigma_\nu}{h\nu} \right] = \text{ s}^{-1} \text{ cm}^{-3}  \text{ }\nu^{-1}.
+\end{equation}
+
+\noindent It makes sense that the rate per volume of photoionization would be proportional to the absorption coefficient. The obvious next step is to get rid of the 'per frequency' by integrating over frequency to get an expression for the total photoionization rate per volume,
+
+\begin{equation}
+\left[ 4\pi n_a \int \frac{J_\nu \sigma_\nu}{h\nu} \right] = \text{ s}^{-1} \text{ cm}^{-3}  .
+\end{equation}
+
+\noindent To show the final expression, I just need to remember the definition of total radiation density in a field,
+
+\begin{equation}
+\int u_\nu d\nu = \int \frac{4\pi}{c} J_\nu d\nu, 
+\end{equation}
+
+\begin{equation}
+4\pi\int J_\nu \nu = c\int u_\nu d\nu, \text{ which means,}
+\end{equation}
+
+\begin{equation}
+4\pi n_a \int \frac{J_\nu \sigma_\nu}{h\nu} = cn_a \int \frac{u_\nu \sigma_\nu}{h\nu}.
+\end{equation}
 
 \noindent \textbf{Problem 2 (RL 1.7)} 
 
 \begin{itemize}
 
-\item Show that if stimulated emission is neglected, leaving only two Einstein coefficients, an appropriate relation between the coefficients will be consistent with thermal equilibrium between the atom and a radiation field of a Wien spectrum, but not of a Planck spectrum. 
+\item Show that if stimulated emission is neglected, leaving only two Einstein coefficients, an appropriate relation between the coefficients will be consistent with thermal equilibrium between the atom and a radiation field of a Wien spectrum, but not of a Planck spectrum. \\
 
-\textbf{Answer} \\
+\textbf{Answer} I'll start by removing the stimulated emission term from equation 1.69,
 
+\begin{equation}
+n_1B_{12}\bar{J} n_2A_{21}.
+\end{equation}
+
+\noindent This allows me to get a very simple expression for the mean intensity,
+
+\begin{equation}
+\bar{J} = \frac{n_2A_{21}}{n_1B_{12}}.
+\end{equation}
+
+\noindent From equation 1.70, I know the expression for $n_1/n_2$ in thermodynamic equilibrium which I can put into my expression for $\bar{J}$, 
+
+\begin{equation}
+\bar{J} = \frac{g_2}{g_1}{\rm e}^{-h\nu_0/k_bT}\frac{A_{21}}{B_{12}}.
+\end{equation} 
+
+\noindent Following the reasoning in the book, in thermodynamic equilibrium $J_\nu = B_\nu$ and $B_\nu$ varies slowly on the scale of $\Delta\nu$ which implies that $\bar{J} = B_\nu$. For a Planck spectrum,
+
+\begin{equation}
+B_\nu = \frac{2h\nu^3}{c^2} \left({\rm e}^{-h\nu/k_bT} - 1 \right).
+\end{equation} 
+
+\noindent If I put the expression for the Planck spectrum into my expression for $\bar{J}$ I cannot get an Einstein relation ship that does not depend on temperature. However, if I put in the expression for the Wein spectrum, 
+
+\begin{equation}
+\frac{2h\nu^3}{c^2} {\rm e}^{-h\nu/k_bT} =  \frac{g_2}{g_1}{\rm e}^{-h\nu_0/k_bT}\frac{A_{21}}{B_{12}}, 
+\end{equation}
+
+\begin{equation}
+\frac{2h\nu^3}{c^2} =  \frac{g_2}{g_1}\frac{A_{21}}{B_{12}}, 
+\end{equation}
+
+\begin{equation}
+\frac{2h\nu^3}{c^2}g_1B_{12} = g_2A_{21},
+\end{equation}
+
+\noindent I can get an equation of detailed balance that does not depend on temperature and so will hold whether or not the atoms are in equilibrium.
 
 \item Re-derive the relation between the Einstein coefficients by imagining the atom to be in thermal equilibrium with a neutrino field (spin 1/2) rather than a photon field (spin 1). \textbf{Hint:} Neutrinos are Fermi-Dirac particles and obey the exclusion principle. In addition, their equilibrium intensity is given by,
 
@@ -39,9 +118,66 @@ Radiative Transfer}
 I_\nu = \frac{2h\nu^3 / c^2}{{\rm exp}\left[h\nu / kT\right] + 1}.
 \end{equation*}
 
-\textbf{Answer} \\
+\textbf{Answer} I'm going to start with equation 1.69 from the book,
 
+\begin{equation}
+n_1B_12\bar{J} = n_2A_{21} + n_2B_{21}\bar{J}.
+\end{equation}
+
+\noindent But I'm going to assume inhibited emission and so the expression changes to, 
+
+\begin{equation}
+n_1B_12\bar{J} = n_2A_{21} - n_2B_{21}\bar{J}.
+\end{equation}
+
+\noindent From which I can get the following expression, 
+
+\begin{equation}
+\bar{J} = \frac{A_{21}/B_{21}}{\left(n_1/n_2\right)\left(B_{12}/B_{21}\right) + 1}.
+\end{equation}
+
+\noindent I already know that,
+
+\begin{equation}
+\frac{n_1}{n_2} = \frac{g_1}{g_2}{\rm e}^{h\nu_0/k_bT},
+\end{equation}
+
+\begin{equation}
+\bar{J} = \frac{A_{21}/B_{21}}{\left(g_1B_{12}/g_2B_{21}\right){\rm e}^{h\nu_0/k_bT} + 1}
+\end{equation}
+
+\noindent Setting this equal to the Planck function, 
+
+\begin{equation}
+\frac{2h\nu^3}{c^2}\left({\rm e}^{-h\nu/k_bT} - 1 \right) = \frac{A_{21}/B_{21}}{\left(g_1B_{12}/g_2B_{21}\right){\rm e}^{h\nu_0/k_bT} + 1},
+\end{equation}
+
+\begin{equation}
+\frac{2h\nu^3}{c^2}\left(- 1 \right) = \frac{A_{21}/B_{21}}{\left(g_1B_{12}/g_2B_{21}\right)},
+\end{equation}
+
+\noindent which gives Einstein coefficients of, 
+
+\begin{equation}
+A_{21} = - \frac{2h\nu^3}{c^2}B_{21}, \text{ and,}
+\end{equation}
+
+\begin{equation}
+g_1B_{12} = g_2B_{21}.
+\end{equation}
 
 \end{itemize}
+
+\noindent \textbf{Problem 3}
+
+\begin{itemize}
+\item Write an original code to integrate the Planck curve to find the total brightness $B\left(T\right)$.
+
+\item Write an original code to find the numerical value of the peak of the Planck curve $B_\nu(\nu, T)$ in terms of multiples of $x=h\nu/k_bT$. Repeat for the Planck curve $B_\lambda(\lambda, T)$ and the variable $y=hc/\lambda k_bT$.
+
+\item Write an original code to find the numerical value fo the peak of the derivative of the Planck curve $\partial B_\nu\left(\nu, T\right)/\partial T$ with respect to $T$ in terms of multiples of $x = h\nu/k_bT$.
+\end{itemize}
+
+\noindent \textbf{Answer} The code for this can be found on my GitHub page, \url{}
 
 \end{document}
